@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>6 Manipulação | Introdução ao R</title>
+  <meta name="description" content="Este é um curso básico de introdução ao R voltado para servidores do serviço público de Minas Gerais." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="6 Manipulação | Introdução ao R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Este é um curso básico de introdução ao R voltado para servidores do serviço público de Minas Gerais." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="6 Manipulação | Introdução ao R" />
+  
+  <meta name="twitter:description" content="Este é um curso básico de introdução ao R voltado para servidores do serviço público de Minas Gerais." />
+  
+
+<meta name="author" content="Alexandre Freitas" />
+
+
+<meta name="date" content="2020-09-08" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="importação.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introdução</a></li>
+<li class="chapter" data-level="2" data-path="o-que-é-o-r.html"><a href="o-que-é-o-r.html"><i class="fa fa-check"></i><b>2</b> O que é o R?</a><ul>
+<li class="chapter" data-level="2.1" data-path="o-que-é-o-r.html"><a href="o-que-é-o-r.html#como-baixar-o-r"><i class="fa fa-check"></i><b>2.1</b> Como baixar o <em>R</em>?</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="interface-do-rstudio-e-primeiros-manuseios.html"><a href="interface-do-rstudio-e-primeiros-manuseios.html"><i class="fa fa-check"></i><b>3</b> Interface do RStudio e primeiros manuseios</a><ul>
+<li class="chapter" data-level="3.1" data-path="interface-do-rstudio-e-primeiros-manuseios.html"><a href="interface-do-rstudio-e-primeiros-manuseios.html#entendendo-o-rstudio"><i class="fa fa-check"></i><b>3.1</b> Entendendo o RStudio:</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="interface-do-rstudio-e-primeiros-manuseios.html"><a href="interface-do-rstudio-e-primeiros-manuseios.html#personalizando-o-rstudio"><i class="fa fa-check"></i><b>3.1.1</b> Personalizando o RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="interface-do-rstudio-e-primeiros-manuseios.html"><a href="interface-do-rstudio-e-primeiros-manuseios.html#operadores-e-funções-matemáticas"><i class="fa fa-check"></i><b>3.2</b> Operadores e funções matemáticas</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="interface-do-rstudio-e-primeiros-manuseios.html"><a href="interface-do-rstudio-e-primeiros-manuseios.html#funções-matemáticas-básicas"><i class="fa fa-check"></i><b>3.2.1</b> Funções matemáticas básicas</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="interface-do-rstudio-e-primeiros-manuseios.html"><a href="interface-do-rstudio-e-primeiros-manuseios.html#operadores-lógicos"><i class="fa fa-check"></i><b>3.3</b> Operadores lógicos</a></li>
+<li class="chapter" data-level="3.4" data-path="interface-do-rstudio-e-primeiros-manuseios.html"><a href="interface-do-rstudio-e-primeiros-manuseios.html#tipos-e-classes-de-objetos"><i class="fa fa-check"></i><b>3.4</b> Tipos e classes de objetos</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="interface-do-rstudio-e-primeiros-manuseios.html"><a href="interface-do-rstudio-e-primeiros-manuseios.html#vetores"><i class="fa fa-check"></i><b>3.4.1</b> Vetores</a></li>
+<li class="chapter" data-level="3.4.2" data-path="interface-do-rstudio-e-primeiros-manuseios.html"><a href="interface-do-rstudio-e-primeiros-manuseios.html#listas-e-arrays"><i class="fa fa-check"></i><b>3.4.2</b> Listas e arrays</a></li>
+<li class="chapter" data-level="3.4.3" data-path="interface-do-rstudio-e-primeiros-manuseios.html"><a href="interface-do-rstudio-e-primeiros-manuseios.html#data.frames-tabelas"><i class="fa fa-check"></i><b>3.4.3</b> Data.frames (Tabelas)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="pacotes-dúvidas-e-documentação.html"><a href="pacotes-dúvidas-e-documentação.html"><i class="fa fa-check"></i><b>4</b> Pacotes, dúvidas e documentação</a><ul>
+<li class="chapter" data-level="4.1" data-path="pacotes-dúvidas-e-documentação.html"><a href="pacotes-dúvidas-e-documentação.html#como-encontrar-as-respostas-às-minhas-dúvidas"><i class="fa fa-check"></i><b>4.1</b> Como encontrar as respostas às minhas dúvidas?</a></li>
+<li class="chapter" data-level="4.2" data-path="pacotes-dúvidas-e-documentação.html"><a href="pacotes-dúvidas-e-documentação.html#pacotes"><i class="fa fa-check"></i><b>4.2</b> Pacotes</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="importação.html"><a href="importação.html"><i class="fa fa-check"></i><b>5</b> Importação</a><ul>
+<li class="chapter" data-level="5.1" data-path="importação.html"><a href="importação.html#csv"><i class="fa fa-check"></i><b>5.1</b> CSV</a></li>
+<li class="chapter" data-level="5.2" data-path="importação.html"><a href="importação.html#xlsx"><i class="fa fa-check"></i><b>5.2</b> xlsx</a></li>
+<li class="chapter" data-level="5.3" data-path="importação.html"><a href="importação.html#spss"><i class="fa fa-check"></i><b>5.3</b> SPSS</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="manipulação.html"><a href="manipulação.html"><i class="fa fa-check"></i><b>6</b> Manipulação</a><ul>
+<li class="chapter" data-level="6.1" data-path="manipulação.html"><a href="manipulação.html#select"><i class="fa fa-check"></i><b>6.1</b> select()</a></li>
+<li class="chapter" data-level="6.2" data-path="manipulação.html"><a href="manipulação.html#filter"><i class="fa fa-check"></i><b>6.2</b> filter()</a></li>
+<li class="chapter" data-level="6.3" data-path="manipulação.html"><a href="manipulação.html#mutate"><i class="fa fa-check"></i><b>6.3</b> mutate()</a></li>
+<li class="chapter" data-level="6.4" data-path="manipulação.html"><a href="manipulação.html#arrange"><i class="fa fa-check"></i><b>6.4</b> arrange()</a></li>
+<li class="chapter" data-level="6.5" data-path="manipulação.html"><a href="manipulação.html#pipe"><i class="fa fa-check"></i><b>6.5</b> Pipe (%&gt;%)</a></li>
+<li class="chapter" data-level="6.6" data-path="manipulação.html"><a href="manipulação.html#summarise"><i class="fa fa-check"></i><b>6.6</b> summarise()</a></li>
+<li class="chapter" data-level="6.7" data-path="manipulação.html"><a href="manipulação.html#group_by"><i class="fa fa-check"></i><b>6.7</b> group_by()</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introdução ao R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="manipulação" class="section level1">
+<h1><span class="header-section-number">6</span> Manipulação</h1>
+<p>Conseguimos ler nossas bases de dados, mas precisamos agora aprender a manipulá-la. Para tanto utilizaremos o pacote dplyr. Vocês podem acessar o cheatsheet deste pacote em: <a href="https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf" class="uri">https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf</a></p>
+<p>Aprenderemos agora as principais funções:</p>
+<pre><code>select() Seleciona variáveis
+filter() Filtra linhas de acordo com seus valores
+mutate() Cria novas variáveis ou modifica variáveis existentes.
+summarise() Reduz multiplos valores por um summário
+arrange() Muda a ordem das observações</code></pre>
+<p>Além disso existe a função group_by() que realiza as operações acima a partir de grupos.</p>
+<div id="select" class="section level2">
+<h2><span class="header-section-number">6.1</span> select()</h2>
+<p>Vamos observar como funciona a função select a partir do banco de dados USArrests. Para conhecer como a função select() funciona, o primeiro passo é olhar sua documentação, para isso digite help(select). Observação: eu utilizei todos os comandos com a função head() para que fossem apresentados apenas as 6 primeiras observações. Isso é um puxadinho que eu vou ver se corrijo mais para frente.</p>
+<pre><code>Usage
+select(.data, ...)</code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" data-line-number="1"><span class="co"># Ler biblioteca</span></a>
+<a class="sourceLine" id="cb75-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb75-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb75-4" data-line-number="4"><span class="co"># Ler db</span></a>
+<a class="sourceLine" id="cb75-5" data-line-number="5"><span class="kw">data</span>(<span class="st">&quot;USArrests&quot;</span>)</a>
+<a class="sourceLine" id="cb75-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb75-7" data-line-number="7"><span class="co"># Ver a estrutura do banco de dados</span></a>
+<a class="sourceLine" id="cb75-8" data-line-number="8"><span class="kw">str</span>(USArrests)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    50 obs. of  4 variables:
+##  $ Murder  : num  13.2 10 8.1 8.8 9 7.9 3.3 5.9 15.4 17.4 ...
+##  $ Assault : int  236 263 294 190 276 204 110 238 335 211 ...
+##  $ UrbanPop: int  58 48 80 50 91 78 77 72 80 60 ...
+##  $ Rape    : num  21.2 44.5 31 19.5 40.6 38.7 11.1 15.8 31.9 25.8 ...</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" data-line-number="1"><span class="co"># Selecionar variável UrbanPop</span></a>
+<a class="sourceLine" id="cb77-2" data-line-number="2"><span class="kw">head</span>(<span class="kw">select</span>(USArrests, UrbanPop))</a></code></pre></div>
+<pre><code>##            UrbanPop
+## Alabama          58
+## Alaska           48
+## Arizona          80
+## Arkansas         50
+## California       91
+## Colorado         78</code></pre>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" data-line-number="1"><span class="co"># Selecionar as variáveis Murder, Assault e Rape</span></a>
+<a class="sourceLine" id="cb79-2" data-line-number="2"><span class="kw">head</span>(<span class="kw">select</span>(USArrests, Murder, Assault, Rape))</a></code></pre></div>
+<pre><code>##            Murder Assault Rape
+## Alabama      13.2     236 21.2
+## Alaska       10.0     263 44.5
+## Arizona       8.1     294 31.0
+## Arkansas      8.8     190 19.5
+## California    9.0     276 40.6
+## Colorado      7.9     204 38.7</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" data-line-number="1"><span class="co"># Criar um novo banco de dados com apenas as variáveis Murder e Assault</span></a>
+<a class="sourceLine" id="cb81-2" data-line-number="2">murder_rape_usa &lt;-<span class="st"> </span><span class="kw">select</span>(USArrests, Murder, Rape)</a>
+<a class="sourceLine" id="cb81-3" data-line-number="3"><span class="co"># Visualizar o banco de dados murder_rape_usa</span></a>
+<a class="sourceLine" id="cb81-4" data-line-number="4"><span class="kw">head</span>(murder_rape_usa)</a></code></pre></div>
+<pre><code>##            Murder Rape
+## Alabama      13.2 21.2
+## Alaska       10.0 44.5
+## Arizona       8.1 31.0
+## Arkansas      8.8 19.5
+## California    9.0 40.6
+## Colorado      7.9 38.7</code></pre>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" data-line-number="1"><span class="co"># Vamos criar um banco de dados com todas as variáveis menos Rape</span></a>
+<a class="sourceLine" id="cb83-2" data-line-number="2">murder_all_but_rape &lt;-<span class="st"> </span><span class="kw">select</span>(USArrests, <span class="op">-</span>Rape)</a>
+<a class="sourceLine" id="cb83-3" data-line-number="3"><span class="co"># Visualizar o banco de dados</span></a>
+<a class="sourceLine" id="cb83-4" data-line-number="4"><span class="kw">head</span>(murder_all_but_rape)</a></code></pre></div>
+<pre><code>##            Murder Assault UrbanPop
+## Alabama      13.2     236       58
+## Alaska       10.0     263       48
+## Arizona       8.1     294       80
+## Arkansas      8.8     190       50
+## California    9.0     276       91
+## Colorado      7.9     204       78</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1"><span class="co"># Para não encher meu environment de dados, vou utilizar a função rm() para limpá-lo</span></a>
+<a class="sourceLine" id="cb85-2" data-line-number="2"><span class="kw">rm</span>(murder_rape_usa, murder_all_but_rape)</a></code></pre></div>
+<p>Como podemos ver podemos selecionar quantas variáveis que estão no banco de dados que quisermos. Para falarmos que não queremos uma variável específica podemos colocar ‘-nome_da_variável’.</p>
+</div>
+<div id="filter" class="section level2">
+<h2><span class="header-section-number">6.2</span> filter()</h2>
+<p>Vamos agora aprender a filtrar observações.</p>
+<pre><code>help(filter)
+Usage
+filter(.data, ..., .preserve = FALSE)</code></pre>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" data-line-number="1"><span class="co"># Filtrando os Estados com mais de 20 rapes por 100.000 pessoas.</span></a>
+<a class="sourceLine" id="cb87-2" data-line-number="2"><span class="kw">head</span>(<span class="kw">filter</span>(USArrests, Rape <span class="op">&gt;</span><span class="st"> </span><span class="dv">20</span>))</a></code></pre></div>
+<pre><code>##   Murder Assault UrbanPop Rape
+## 1   13.2     236       58 21.2
+## 2   10.0     263       48 44.5
+## 3    8.1     294       80 31.0
+## 4    9.0     276       91 40.6
+## 5    7.9     204       78 38.7
+## 6   15.4     335       80 31.9</code></pre>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1"><span class="co"># Filtrando os Estados com igual ou maior do que 20 rapes por 100.000 pessoas</span></a>
+<a class="sourceLine" id="cb89-2" data-line-number="2"><span class="kw">head</span>(<span class="kw">filter</span>(USArrests, Rape <span class="op">&gt;=</span><span class="st"> </span><span class="dv">20</span>))</a></code></pre></div>
+<pre><code>##   Murder Assault UrbanPop Rape
+## 1   13.2     236       58 21.2
+## 2   10.0     263       48 44.5
+## 3    8.1     294       80 31.0
+## 4    9.0     276       91 40.6
+## 5    7.9     204       78 38.7
+## 6   15.4     335       80 31.9</code></pre>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1"><span class="co"># Com o símbolo &gt;= encontramos 1 estado a mais que não havia sido encontrado da primeira vez</span></a>
+<a class="sourceLine" id="cb91-2" data-line-number="2"><span class="co"># Qual é este Estado? Como fazer para encontrá-lo através do filter()?</span></a>
+<a class="sourceLine" id="cb91-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb91-4" data-line-number="4"><span class="co"># Quais são os estados com 20 rapes ou mais e que possuem população urbana igual ou maior a 80%?</span></a>
+<a class="sourceLine" id="cb91-5" data-line-number="5"><span class="kw">head</span>(<span class="kw">filter</span>(USArrests, Rape <span class="op">&gt;</span><span class="st"> </span><span class="dv">20</span> <span class="op">&amp;</span><span class="st"> </span>UrbanPop <span class="op">&gt;=</span><span class="st"> </span><span class="dv">80</span>))</a></code></pre></div>
+<pre><code>##   Murder Assault UrbanPop Rape
+## 1    8.1     294       80 31.0
+## 2    9.0     276       91 40.6
+## 3   15.4     335       80 31.9
+## 4    5.3      46       83 20.2
+## 5   10.4     249       83 24.0
+## 6   12.2     252       81 46.0</code></pre>
+</div>
+<div id="mutate" class="section level2">
+<h2><span class="header-section-number">6.3</span> mutate()</h2>
+<p>Vamos visualizar a função mutate:</p>
+<pre><code>help(mutate)
+
+Create or transform variables
+
+Description
+mutate() adds new variables and preserves existing ones; transmute() adds new variables and drops existing ones.
+Both functions preserve the number of rows of the input. New variables overwrite existing variables of the same name.
+
+Usage
+mutate(.data, ...)
+
+transmute(.data, ...)</code></pre>
+<p>Vamos ver como funciona:</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1"><span class="co"># Os casos de murder, assault e rape estão na taxa de 1:100.000;</span></a>
+<a class="sourceLine" id="cb94-2" data-line-number="2"><span class="co"># Vamos criar novas variáveis com a taxa de 1:10.000?</span></a>
+<a class="sourceLine" id="cb94-3" data-line-number="3"><span class="kw">head</span>(<span class="kw">mutate</span>(USArrests, </a>
+<a class="sourceLine" id="cb94-4" data-line-number="4">       <span class="dt">murder_10k =</span> Murder <span class="op">*</span><span class="st"> </span><span class="dv">10</span>,</a>
+<a class="sourceLine" id="cb94-5" data-line-number="5">       <span class="dt">assault_10k =</span> Assault <span class="op">*</span><span class="st"> </span><span class="dv">10</span>,</a>
+<a class="sourceLine" id="cb94-6" data-line-number="6">       <span class="dt">rape_10k =</span> Rape <span class="op">*</span><span class="st"> </span><span class="dv">10</span>))</a></code></pre></div>
+<pre><code>##   Murder Assault UrbanPop Rape murder_10k assault_10k rape_10k
+## 1   13.2     236       58 21.2        132        2360      212
+## 2   10.0     263       48 44.5        100        2630      445
+## 3    8.1     294       80 31.0         81        2940      310
+## 4    8.8     190       50 19.5         88        1900      195
+## 5    9.0     276       91 40.6         90        2760      406
+## 6    7.9     204       78 38.7         79        2040      387</code></pre>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1"><span class="co"># Podemos também alterar colunas existentes</span></a>
+<a class="sourceLine" id="cb96-2" data-line-number="2"><span class="kw">head</span>(<span class="kw">mutate</span>(USArrests, </a>
+<a class="sourceLine" id="cb96-3" data-line-number="3">       <span class="dt">Murder =</span> Murder <span class="op">*</span><span class="st"> </span><span class="dv">10</span>,</a>
+<a class="sourceLine" id="cb96-4" data-line-number="4">       <span class="dt">Assault =</span> Assault <span class="op">*</span><span class="st"> </span><span class="dv">10</span>,</a>
+<a class="sourceLine" id="cb96-5" data-line-number="5">       <span class="dt">Rape =</span> Rape <span class="op">*</span><span class="st"> </span><span class="dv">10</span>))</a></code></pre></div>
+<pre><code>##   Murder Assault UrbanPop Rape
+## 1    132    2360       58  212
+## 2    100    2630       48  445
+## 3     81    2940       80  310
+## 4     88    1900       50  195
+## 5     90    2760       91  406
+## 6     79    2040       78  387</code></pre>
+<p>Cuidado para não sobrescrever seu banco de dados sem que você realmente queira fazer isso. Eu normalmente deixo um banco de dados original e crio uma cópia deste para sobrescrever apenas a cópia. Essa é apenas uma dica, pois não haveria problema no exemplo acima já que não salvamos o resultado no objeto.</p>
+</div>
+<div id="arrange" class="section level2">
+<h2><span class="header-section-number">6.4</span> arrange()</h2>
+<p>Vamos observar a documentação da função arrange():</p>
+<pre><code>help(arrange)
+
+Arrange rows by variables
+
+Description
+Order tbl rows by an expression involving its variables.
+
+Usage
+arrange(.data, ...)
+## S3 method for class &#39;grouped_df&#39;
+arrange(.data, ..., .by_group = FALSE)
+
+Arguments
+.data   A tbl. All main verbs are S3 generics and provide methods for tbl_df(), dtplyr::tbl_dt() and dbplyr::tbl_dbi().
+... 
+
+Comma separated list of unquoted variable names, or expressions involving variable names. Use desc() to sort a variable in descending order.
+.by_group   
+If TRUE, will sort first by grouping variable. Applies to grouped data frames only.</code></pre>
+<p>Agora alguns exemplos. Para estes exemplos vamos utilizar os dados que estão na biblioteca gapminder</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1"><span class="co"># install.packages(&quot;gapminder&quot;)</span></a>
+<a class="sourceLine" id="cb99-2" data-line-number="2"><span class="kw">library</span>(gapminder)</a>
+<a class="sourceLine" id="cb99-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb99-4" data-line-number="4"><span class="co"># Observar a estrutura</span></a>
+<a class="sourceLine" id="cb99-5" data-line-number="5"><span class="kw">str</span>(gapminder)</a></code></pre></div>
+<pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    1704 obs. of  6 variables:
+##  $ country  : Factor w/ 142 levels &quot;Afghanistan&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ continent: Factor w/ 5 levels &quot;Africa&quot;,&quot;Americas&quot;,..: 3 3 3 3 3 3 3 3 3 3 ...
+##  $ year     : int  1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
+##  $ lifeExp  : num  28.8 30.3 32 34 36.1 ...
+##  $ pop      : int  8425333 9240934 10267083 11537966 13079460 14880372 12881816 13867957 16317921 22227415 ...
+##  $ gdpPercap: num  779 821 853 836 740 ...</code></pre>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1"><span class="co"># Ordene por país</span></a>
+<a class="sourceLine" id="cb101-2" data-line-number="2"><span class="kw">arrange</span>(gapminder, country)</a></code></pre></div>
+<pre><code>## # A tibble: 1,704 x 6
+##    country     continent  year lifeExp      pop gdpPercap
+##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+##  1 Afghanistan Asia       1952    28.8  8425333      779.
+##  2 Afghanistan Asia       1957    30.3  9240934      821.
+##  3 Afghanistan Asia       1962    32.0 10267083      853.
+##  4 Afghanistan Asia       1967    34.0 11537966      836.
+##  5 Afghanistan Asia       1972    36.1 13079460      740.
+##  6 Afghanistan Asia       1977    38.4 14880372      786.
+##  7 Afghanistan Asia       1982    39.9 12881816      978.
+##  8 Afghanistan Asia       1987    40.8 13867957      852.
+##  9 Afghanistan Asia       1992    41.7 16317921      649.
+## 10 Afghanistan Asia       1997    41.8 22227415      635.
+## # … with 1,694 more rows</code></pre>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" data-line-number="1"><span class="co"># Ordene a por gdpPercap (de forma descendente) e país (ascendente) </span></a>
+<a class="sourceLine" id="cb103-2" data-line-number="2"><span class="kw">arrange</span>(gapminder, <span class="op">-</span>gdpPercap, country)</a></code></pre></div>
+<pre><code>## # A tibble: 1,704 x 6
+##    country   continent  year lifeExp     pop gdpPercap
+##    &lt;fct&gt;     &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;     &lt;dbl&gt;
+##  1 Kuwait    Asia       1957    58.0  212846   113523.
+##  2 Kuwait    Asia       1972    67.7  841934   109348.
+##  3 Kuwait    Asia       1952    55.6  160000   108382.
+##  4 Kuwait    Asia       1962    60.5  358266    95458.
+##  5 Kuwait    Asia       1967    64.6  575003    80895.
+##  6 Kuwait    Asia       1977    69.3 1140357    59265.
+##  7 Norway    Europe     2007    80.2 4627926    49357.
+##  8 Kuwait    Asia       2007    77.6 2505559    47307.
+##  9 Singapore Asia       2007    80.0 4553009    47143.
+## 10 Norway    Europe     2002    79.0 4535591    44684.
+## # … with 1,694 more rows</code></pre>
+</div>
+<div id="pipe" class="section level2">
+<h2><span class="header-section-number">6.5</span> Pipe (%&gt;%)</h2>
+<p>Antes de falarmos das funções summarise e group_by vamos falar do pipe (%&gt;%). Ela faz parte do pacote dplyr do tidyverse.</p>
+<p>Ela é uma das ferramentas mais utilizadas em nosso código, e ela permite a execução de funções em sequência, etapa por etapa. O pipe deixa nosso código mais limpo e mais fácil de compreensão.</p>
+<p>Vamos ver alguns usos:</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb105-2" data-line-number="2">gapminder <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb105-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">1952</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 142 x 6
+##    country     continent  year lifeExp      pop gdpPercap
+##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+##  1 Afghanistan Asia       1952    28.8  8425333      779.
+##  2 Albania     Europe     1952    55.2  1282697     1601.
+##  3 Algeria     Africa     1952    43.1  9279525     2449.
+##  4 Angola      Africa     1952    30.0  4232095     3521.
+##  5 Argentina   Americas   1952    62.5 17876956     5911.
+##  6 Australia   Oceania    1952    69.1  8691212    10040.
+##  7 Austria     Europe     1952    66.8  6927772     6137.
+##  8 Bahrain     Asia       1952    50.9   120447     9867.
+##  9 Bangladesh  Asia       1952    37.5 46886859      684.
+## 10 Belgium     Europe     1952    68    8730405     8343.
+## # … with 132 more rows</code></pre>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" data-line-number="1">gapminder <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb107-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">1952</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb107-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(country, pop)</a></code></pre></div>
+<pre><code>## # A tibble: 142 x 2
+##    country          pop
+##    &lt;fct&gt;          &lt;int&gt;
+##  1 Afghanistan  8425333
+##  2 Albania      1282697
+##  3 Algeria      9279525
+##  4 Angola       4232095
+##  5 Argentina   17876956
+##  6 Australia    8691212
+##  7 Austria      6927772
+##  8 Bahrain       120447
+##  9 Bangladesh  46886859
+## 10 Belgium      8730405
+## # … with 132 more rows</code></pre>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" data-line-number="1">gapminder <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb109-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">pib =</span> pop <span class="op">*</span><span class="st"> </span>gdpPercap) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb109-3" data-line-number="3"><span class="st">  </span><span class="kw">arrange</span>(<span class="op">-</span>pib)</a></code></pre></div>
+<pre><code>## # A tibble: 1,704 x 7
+##    country       continent  year lifeExp        pop gdpPercap     pib
+##    &lt;fct&gt;         &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;      &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+##  1 United States Americas   2007    78.2  301139947    42952. 1.29e13
+##  2 United States Americas   2002    77.3  287675526    39097. 1.12e13
+##  3 United States Americas   1997    76.8  272911760    35767. 9.76e12
+##  4 United States Americas   1992    76.1  256894189    32004. 8.22e12
+##  5 United States Americas   1987    75.0  242803533    29884. 7.26e12
+##  6 China         Asia       2007    73.0 1318683096     4959. 6.54e12
+##  7 United States Americas   1982    74.6  232187835    25010. 5.81e12
+##  8 United States Americas   1977    73.4  220239000    24073. 5.30e12
+##  9 United States Americas   1972    71.3  209896000    21806. 4.58e12
+## 10 Japan         Asia       2007    82.6  127467972    31656. 4.04e12
+## # … with 1,694 more rows</code></pre>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1">gapminder <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb111-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="dv">2007</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb111-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">pib =</span> pop <span class="op">*</span><span class="st"> </span>gdpPercap) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb111-4" data-line-number="4"><span class="st">  </span><span class="kw">arrange</span>(<span class="op">-</span>pib)</a></code></pre></div>
+<pre><code>## # A tibble: 142 x 7
+##    country        continent  year lifeExp        pop gdpPercap     pib
+##    &lt;fct&gt;          &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;      &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+##  1 United States  Americas   2007    78.2  301139947    42952. 1.29e13
+##  2 China          Asia       2007    73.0 1318683096     4959. 6.54e12
+##  3 Japan          Asia       2007    82.6  127467972    31656. 4.04e12
+##  4 India          Asia       2007    64.7 1110396331     2452. 2.72e12
+##  5 Germany        Europe     2007    79.4   82400996    32170. 2.65e12
+##  6 United Kingdom Europe     2007    79.4   60776238    33203. 2.02e12
+##  7 France         Europe     2007    80.7   61083916    30470. 1.86e12
+##  8 Brazil         Americas   2007    72.4  190010647     9066. 1.72e12
+##  9 Italy          Europe     2007    80.5   58147733    28570. 1.66e12
+## 10 Mexico         Americas   2007    76.2  108700891    11978. 1.30e12
+## # … with 132 more rows</code></pre>
+</div>
+<div id="summarise" class="section level2">
+<h2><span class="header-section-number">6.6</span> summarise()</h2>
+<p>Vamos observar a documentação da função summarise:</p>
+<pre><code>help(summarise)
+Reduce multiple values down to a single value
+
+Description
+Create one or more scalar variables summarizing the variables of an existing tbl. Tbls with groups created by group_by() will result in one row in the output for each group. Tbls with no groups will result in one row.
+
+Useful functions
+
+Center: mean(), median()
+Spread: sd(), IQR(), mad()
+Range: min(), max(), quantile()
+Position: first(), last(), nth(),
+Count: n(), n_distinct()
+Logical: any(), all()</code></pre>
+<p>Agora alguns exemplos:</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1">gapminder <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb114-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(year)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb114-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n_paises_analisados =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb114-4" data-line-number="4">            <span class="dt">ano =</span> <span class="kw">first</span>(year),            </a>
+<a class="sourceLine" id="cb114-5" data-line-number="5">            <span class="dt">mean_gdpPercap =</span> <span class="kw">mean</span>(gdpPercap),</a>
+<a class="sourceLine" id="cb114-6" data-line-number="6">            <span class="dt">max_gdpPercap =</span> <span class="kw">max</span>(gdpPercap),</a>
+<a class="sourceLine" id="cb114-7" data-line-number="7">            <span class="dt">min_gdp_percap =</span> <span class="kw">min</span>(gdpPercap),</a>
+<a class="sourceLine" id="cb114-8" data-line-number="8">            <span class="dt">mean_life_exp =</span> <span class="kw">mean</span>(lifeExp),</a>
+<a class="sourceLine" id="cb114-9" data-line-number="9">            <span class="dt">max_life_exp =</span> <span class="kw">max</span>(lifeExp),</a>
+<a class="sourceLine" id="cb114-10" data-line-number="10">            <span class="dt">min_life_exp =</span> <span class="kw">min</span>(lifeExp))</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 8
+##   n_paises_analis…   ano mean_gdpPercap max_gdpPercap min_gdp_percap
+##              &lt;int&gt; &lt;int&gt;          &lt;dbl&gt;         &lt;dbl&gt;          &lt;dbl&gt;
+## 1              142  2007         11680.        49357.           278.
+## # … with 3 more variables: mean_life_exp &lt;dbl&gt;, max_life_exp &lt;dbl&gt;,
+## #   min_life_exp &lt;dbl&gt;</code></pre>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1">gapminder <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb116-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(continent) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb116-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">n_paises =</span> <span class="kw">n_distinct</span>(country))</a></code></pre></div>
+<pre><code>## # A tibble: 5 x 2
+##   continent n_paises
+##   &lt;fct&gt;        &lt;int&gt;
+## 1 Africa          52
+## 2 Americas        25
+## 3 Asia            33
+## 4 Europe          30
+## 5 Oceania          2</code></pre>
+</div>
+<div id="group_by" class="section level2">
+<h2><span class="header-section-number">6.7</span> group_by()</h2>
+<p>O que eh</p>
+<pre><code>Description
+
+Most data operations are done on groups defined by variables. group_by() takes an existing tbl and converts it into a grouped tbl where operations are performed &quot;by group&quot;. ungroup() removes grouping.
+
+Usage
+
+group_by(.data, ..., add = FALSE, .drop = group_by_drop_default(.data))
+ungroup(x, ...)</code></pre>
+<p>Exemplo</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" data-line-number="1">gapminder <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb119-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(year <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(year)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb119-3" data-line-number="3"><span class="st">  </span><span class="kw">group_by</span>(continent) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb119-4" data-line-number="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_gdpPercap =</span> <span class="kw">mean</span>(gdpPercap),</a>
+<a class="sourceLine" id="cb119-5" data-line-number="5">            <span class="dt">mean_life_exp =</span> <span class="kw">mean</span>(lifeExp)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb119-6" data-line-number="6"><span class="st">  </span><span class="kw">arrange</span>(<span class="op">-</span>mean_life_exp)</a></code></pre></div>
+<pre><code>## # A tibble: 5 x 3
+##   continent mean_gdpPercap mean_life_exp
+##   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;
+## 1 Oceania           29810.          80.7
+## 2 Europe            25054.          77.6
+## 3 Americas          11003.          73.6
+## 4 Asia              12473.          70.7
+## 5 Africa             3089.          54.8</code></pre>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1">gapminder <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb121-2" data-line-number="2"><span class="st">  </span><span class="kw">group_by</span>(year, continent) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb121-3" data-line-number="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean_gdpPercap =</span> <span class="kw">mean</span>(gdpPercap),</a>
+<a class="sourceLine" id="cb121-4" data-line-number="4">            <span class="dt">mean_life_exp =</span> <span class="kw">mean</span>(lifeExp)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb121-5" data-line-number="5"><span class="st">  </span><span class="kw">arrange</span>(<span class="op">-</span>year, <span class="op">-</span>mean_life_exp)</a></code></pre></div>
+<pre><code>## # A tibble: 60 x 4
+## # Groups:   year [12]
+##     year continent mean_gdpPercap mean_life_exp
+##    &lt;int&gt; &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;
+##  1  2007 Oceania           29810.          80.7
+##  2  2007 Europe            25054.          77.6
+##  3  2007 Americas          11003.          73.6
+##  4  2007 Asia              12473.          70.7
+##  5  2007 Africa             3089.          54.8
+##  6  2002 Oceania           26939.          79.7
+##  7  2002 Europe            21712.          76.7
+##  8  2002 Americas           9288.          72.4
+##  9  2002 Asia              10174.          69.2
+## 10  2002 Africa             2599.          53.3
+## # … with 50 more rows</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="importação.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
